@@ -9,7 +9,13 @@ export const actions = {
   },
 
   async fetchUser ({ commit }) {
-    var user = await auth.verify()
+    var user
+    try {
+      user = await auth.verify()
+    } catch (e) {
+      user = { name: 'Developer' }
+    }
+
     commit(types.user.SET, user)
   }
 }

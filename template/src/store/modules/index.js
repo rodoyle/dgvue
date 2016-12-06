@@ -1,5 +1,5 @@
 import { treeStore, arrayStore } from '@deskgen/dg-store'
-import _mapValues from 'lodash/mapValues'
+import _ from 'lodash'
 
 var user = treeStore('user')
 var items = arrayStore('items')
@@ -9,4 +9,4 @@ export var modules = {
   items
 }
 
-export var types = _mapValues(modules, module => module.types)
+export var types = _.mapValues(modules, 'types')

@@ -1,0 +1,9 @@
+{
+  "prompts": {
+    "desc": {
+      "type": "string",
+      "required": "true",
+      "message": "Project title"
+    }
+  }
+}

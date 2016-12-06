@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <main-nav :user="{ name: userName }"
-              :projects="filteredProjects"
+    <main-nav :user="{ name: user.name }"
+              :projects="projects"
               active="module-name">
     </main-nav>
+
     <!-- route outlet -->
     <div class="row">
       <div class="column small-12">
@@ -15,25 +16,24 @@
 
 <script>
 import MainNav from '@deskgen/dg-main-nav'
-import projects from '../../projects.json'
-import buildConfig from 'build-config'
+import deskgen from 'deskgen'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data(){
     return {
+      projects: deskgen.projects
     }
   },
   components: {
     MainNav
   },
   computed: {
-    filteredProjects: () => projects.filter(p => buildConfig.modules[p.module]),
-    ...mapGetters(['userName'])
+    ...mapGetters(['user'])
   },
-  methods: mapActions([
-    'fetchUser'
-  ]),
+  methods: {
+    ...mapActions(['fetchUser'])
+  },
   created(){
     this.fetchUser()
   }
@@ -45,6 +45,7 @@ export default {
   min-height: 100vh;
   padding-top: 5rem;
 }
+
 .router-view {
   margin: 0;
   padding: 0;

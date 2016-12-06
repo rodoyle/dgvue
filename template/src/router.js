@@ -5,8 +5,8 @@ import Landing from './pages/landing'
 
 // Configure plugins
 Vue.use(VueRouter)
+
 // Configure router
-/* eslint-disable no-new */
 var router = new VueRouter({
   mode: 'history',
   base: '/project-url',
